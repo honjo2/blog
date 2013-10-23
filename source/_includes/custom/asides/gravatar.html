@@ -1,0 +1,21 @@
+{% if site.gravatar_email %}
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">About</h3>
+  </div>
+  <div>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>
+          <img src="{% gravatar_image %}" alt="Gravatar of {{ site.author}} " title="Gravatar of {{ site.author }}" />
+        </td>
+        <td>
+          大磯町出身<br />
+          品川在住<br />
+          ソフトウェアエンジニア
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+{% endif %}
