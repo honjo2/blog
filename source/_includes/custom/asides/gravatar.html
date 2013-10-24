@@ -3,19 +3,16 @@
   <div class="panel-heading">
     <h3 class="panel-title">About</h3>
   </div>
-  <div>
-    <table border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td>
-          <img src="{% gravatar_image %}" alt="Gravatar of {{ site.author}} " title="Gravatar of {{ site.author }}" />
-        </td>
-        <td>
-          大磯町出身<br />
-          品川在住<br />
-          ソフトウェアエンジニア
-        </td>
-      </tr>
-    </table>
+  <div style="display: table-cell">
+    <img src="{% gravatar_image %}" alt="Gravatar of {{ site.author}} " title="Gravatar of {{ site.author }}" />
   </div>
+  <div style="display: table-cell; width: 100%; vertical-align: middle;">
+    <div style="margin-left: 5px; margin-right: 5px;">
+    本城 博昭<br />
+    大磯町出身 品川在住<br />
+    ソフトウェアエンジニア
+    </div>
+  </div>
+
 </section>
 {% endif %}
