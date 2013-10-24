@@ -1,0 +1,19 @@
+---
+layout: post
+title: "XcodeでTomorrowテーマを設定する"
+date: 2013-10-24 15:09
+comments: true
+categories: Xcode
+---
+
+# はじめに
+Tomorrowテーマはプログラムを書く時に最適なテーマですが、ここではXcodeでTomorrow Nightを設定する方法を書きます。
+
+# 手順
+1. `git clone https://github.com/chriskempson/tomorrow-theme.git`
+1. `cd tomorrow-theme`
+1. `cp -i Xcode\ 4/Tomorrow\ Night.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes`
+1. Xcodeを起動（再起動）しPreferencesのFonts & Colorsタブを開く
+1. Tomorrow Nightを選択する
+
+![](/images/2013-10-24/tomorrownight.png)
