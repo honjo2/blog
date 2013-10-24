@@ -6,7 +6,7 @@ comments: true
 categories: EmberFire Firebase EmberJS
 ---
 
-# EmberFireとは
+# EmberFireとは？
 - FirebaseをEmberJSで使えるようにするためのライブラリです。
 - [Announcing Firebase Bindings for EmberJS](https://www.firebase.com/blog/2013-10-22-firebase-bindings-for-ember.html)
 

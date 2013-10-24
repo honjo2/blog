@@ -6,7 +6,6 @@ comments: true
 categories: Xcode
 ---
 
-# はじめに
 Tomorrowテーマはプログラムを書く時に最適なテーマですが、ここではXcodeでTomorrow Nightを設定する方法を書きます。
 
 # 手順
