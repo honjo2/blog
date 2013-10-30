@@ -1,0 +1,17 @@
+---
+layout: post
+title: "地理院地図が正式公開されたので地図をOpenStreetMapに変更するブックマークレット作りました"
+date: 2013-10-31 00:20
+comments: true
+categories: ブックマークレット 地理院地図
+---
+
+[地理院地図](http://portal.cyberjapan.jp/site/mapuse4/)が正式公開されました。右上のコンパスを叩くと距離を測ることができるじゃないですか。これは便利です。Googleマップやマピオンで使いたいところです。そこで地図を変更するブックマークレットを作りました。とりあえず自由に使えるOpenStreetMap版のブックマークレットを公開します。
+
+# 手順
+1. [地理院地図](http://portal.cyberjapan.jp/site/mapuse4/)にアクセス
+2. 以下のブックマークレットをアドレスバーに貼り付ける
+
+```javascript ブックマークレット
+javascript:var layer = new OpenLayers.Layer.XYZ("OpenStreetMap", "http://tile.openstreetmap.org/${z}/${x}/${y}.png", { attribution: "Map data © OpenStreetMap contributors, CC BY-SA" }); map.addLayer(layer); map.setBaseLayer(layer);
+```
