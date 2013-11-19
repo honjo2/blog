@@ -13,7 +13,7 @@ categories: iOS ストリートビュー マピオン
 ![](/images/2013-11-19/streetview1.png)
 ![](/images/2013-11-19/streetview2.png)
 
-地図上をタップするとその場所のストリートビューが開きます。
+地図上を長押しするとその場所のストリートビューが開きます。
 
 - [ソース](https://github.com/honjo2/StreetViewSample01)
 
