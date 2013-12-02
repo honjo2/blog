@@ -1,0 +1,30 @@
+---
+layout: post
+title: "Webメルカトル関係のコマンドラインツールをNode.jsで作ってみました"
+date: 2013-12-02 22:27
+comments: true
+categories: Node.js webmerc
+---
+
+Webメルカトルに纏わる情報を求めるコマンドラインツールが欲しくなったので作りました。
+
+`npm install webmerc -g` でインストールできます。
+
+npmページは[ここ](https://npmjs.org/package/webmerc)
+
+例えばこんなことができます。
+
+
+```sh 緯度経度をメートルに変換
+% webmerc -m 35.7,139.7
+{ x: 15551332.863820316, y: 4259419.96554792 }
+```
+
+```sh メートルを緯度経度に変換
+% webmerc -g 15551332.863820316,4259419.96554792
+{ latitude: 139.7, longitude: 35.70000000000002 }
+```
+
+ソースは[ここ](https://github.com/honjo2/webmerc)
+
+ちなみに、proj4は高機能ですが使いにくいし、Webメルカトル以外は使わないんですよね。
