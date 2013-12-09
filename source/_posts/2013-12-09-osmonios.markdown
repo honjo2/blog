@@ -1,0 +1,28 @@
+---
+layout: post
+title: "マピオンのAPIを使ってOpenStreetMapをiOS/Androidで表示する"
+date: 2013-12-09 09:38
+comments: true
+categories: マピオン OpenStreetMap iOS Android
+---
+
+*この投稿は[OpenStreetMap Advent Calendar](http://qiita.com/advent-calendar/2013/osm) の9日目の記事です。*
+
+[8日目の記事](http://qiita.com/hal_sk/items/e0b3ca53303976bc0235) を拝見させていただいて、マピオンのAPIも紹介したいなと思い書いてみることにしました。
+
+OpenStreetMapをiOSで表示させることができるライブラリはroute-meとMapBoxがありますが、どちらも以下のようなデメリットがあったと記憶しています。
+
+- タイル表示が遅い
+  - 対象のタイルを取得する前にzoom-1のタイルを取得し2倍したものを一時的に表示させている（zoom-1のタイルのキャッシュが利用できればそれほど問題ではないが初めての場所だとリクエストの時間が無駄にかかる）
+- 大縮尺でスクロールするとライン、ポリゴン、サークル、ピンなどのレイヤの動きがカクカクする
+  - UIScrollViewは内部でCGPointを使っているが、このフィールドはCGFloatであるため32bitの場合float型になり大きな値の計算で誤差が生じてしまっている
+
+マピオンのAPIはそのようなことがないです。
+
+ここにOpenStreetMapを表示するコードを書いてもいいのですが、公式サイトにまるまるあるのでリンクを貼らせてもらいます。
+
+[OpenStreetMapをiOSで表示するコード](http://mapion.github.io/MapionMaps-for-iOS-Sample/document.html#orgmap)
+
+Androidもまるまるあるのでリンクを貼るだけにさせてもらいます^^;
+
+[OpenStreetMapをAndroidで表示するコード](http://mapion.github.io/MapionMaps-for-Android-Sample/document.html#osm)
