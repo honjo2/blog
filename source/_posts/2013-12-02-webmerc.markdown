@@ -3,7 +3,7 @@ layout: post
 title: "Webメルカトル関係のコマンドラインツールをNode.jsで作ってみました"
 date: 2013-12-02 22:27
 comments: true
-categories: Node.js webmerc
+categories: Node.js webmerc npm
 ---
 
 Webメルカトルに纏わる情報を求めるコマンドラインツールが欲しくなったので作りました。
@@ -14,6 +14,15 @@ npmページは[ここ](https://npmjs.org/package/webmerc)
 
 例えばこんなことができます。
 
+```sh 緯度経度からピクセルを求める
+% webmerc --c2p 35.7,139.7,15      
+{ x: 7449549.938230911, y: 3302710.99871282 }
+```
+
+```sh ピクセルから緯度経度を求める
+% webmerc --p2c 7449549.938230911,3302710.99871282,15
+{ latitude: 139.70000000000002, longitude: 35.70000000000002 }
+```
 
 ```sh 緯度経度をメートルに変換
 % webmerc -m 35.7,139.7
@@ -23,6 +32,11 @@ npmページは[ここ](https://npmjs.org/package/webmerc)
 ```sh メートルを緯度経度に変換
 % webmerc -g 15551332.863820316,4259419.96554792
 { latitude: 139.7, longitude: 35.70000000000002 }
+```
+
+```sh 緯度経度からタイルインデックスを求める
+% webmerc --tileindex 35.7,139.7,15
+15/29099/12901
 ```
 
 ソースは[ここ](https://github.com/honjo2/webmerc)
