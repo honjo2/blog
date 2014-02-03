@@ -7,32 +7,39 @@ categories: Go
 ---
 
 # GVM（バージョン管理）インストール
-`bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer)`
 
-# .zshrc（.bashrc）に以下追記
+- `bash < <(curl -s https://raw.github.com/moovweb/gvm/master/binscripts/gvm-installer)`
+- .zshrc（.bashrc）に以下追記
+
 ```sh .zshrc
 export PATH=$PATH:$HOME/.gvm/bin
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 ```
 
-# インストール可能なバージョンを確認
-`gvm listall`
+----
 
 # Goインストール
-`go install go1.2`
 
-# インストールされているバージョンを確認
-`gvm list`
+### インストール可能なバージョンを確認
+- `gvm listall`
 
-# 使いたいGoのバージョンを指定
-`gvm use go1.2`
-> 常にこのバージョンを使いたい場合はこれを.zshrc（.bashrc）に追記しておく
+### インストール
+- `gvm install go1.2`
 
-# GoSublime（Sublime Text用プラグイン）インストール
+### インストールされているバージョンを確認
+- `gvm list`
 
-1. Sublime Text 3を開き、Cmd+pで`Package Control: Install Package`と入力しエンター
-1. さらに`gosublime`と入力しエンター
-1. `Preferences -> Package Settings -> GoSublimge -> Settings – User`に以下入力
+### 使いたいGoのバージョンを指定
+- `gvm use go1.2`
+  > 常にこのバージョンを使いたい場合はこれを.zshrc（.bashrc）に追記しておく
+
+----
+
+# GoSublime（Sublime Textプラグイン）インストール
+
+- Sublime Textを開き、Cmd+pで`Package Control: Install Package`と入力しエンター
+- さらに`gosublime`と入力しエンター
+- `Preferences -> Package Settings -> GoSublimge -> Settings – User`に以下入力
 
 ```json GoSublime.sublime-settings
 {
@@ -46,10 +53,16 @@ export PATH=$PATH:$HOME/.gvm/bin
     "fmt_tab_width": 4
 }
 ```
-> GVMが$GOPATHを設定してくれているのでecho `$GOPATH`で確認できる
 
-# サンプルコード作成
+> GVMが$GOPATHを設定してくれているので`echo $GOPATH`で確認できる
 
+- Sublime Textを再起動
+
+----
+
+# サンプル作成
+
+- Sublime Textで以下入力
 ```go main.go
 package main
 
@@ -61,9 +74,6 @@ func main() {
     fmt.Println("Hello, 世界")
 }
 ```
-
-# Sublime Text上で実行
-
-1. Cmd+9でコマンドシェルを開く
-1. cdコマンドでカレントに移動
-1. `run main.go`で実行
+- Cmd+9でコマンドシェルを開く
+- cdコマンドでカレントに移動
+- `run main.go`で実行
