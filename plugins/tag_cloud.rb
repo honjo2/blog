@@ -1,5 +1,6 @@
-# Tag Cloud for Octopress, modified by pf_miles, for use with utf-8 encoded blogs(all regexp added 'u' option).
-# modified by alswl, tag_cloud -> category_cloud
+# encoding: utf-8
+
+# Tag Cloud for Octopress
 # =======================
 # 
 # Description:
@@ -41,15 +42,17 @@
 # 
 # [MIT]: http://www.opensource.org/licenses/mit-license.php
 # 
+require 'stringex'
+
 module Jekyll
 
-  class CategoryCloud < Liquid::Tag
+  class TagCloud < Liquid::Tag
 
     def initialize(tag_name, markup, tokens)
       @opts = {}
-      if markup.strip =~ /\s*counter:(\w+)/iu
+      if markup.strip =~ /\s*counter:(\w+)/i
         @opts['counter'] = ($1 == 'true')
-        markup = markup.strip.sub(/counter:\w+/iu,'')
+        markup = markup.strip.sub(/counter:\w+/i,'')
       end
       super
     end
@@ -68,7 +71,6 @@ module Jekyll
 
       html = ''
       lists.each do | category, counter |
-        #url = category_dir + category.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
         url = category_dir + category.to_url
         style = "font-size: #{100 + (60 * Float(counter)/max)}%"
         html << "<a href='#{url}' style='#{style}'>#{category}"
@@ -85,9 +87,9 @@ module Jekyll
 
     def initialize(tag_name, markup, tokens)
       @opts = {}
-      if markup.strip =~ /\s*counter:(\w+)/iu
+      if markup.strip =~ /\s*counter:(\w+)/i
         @opts['counter'] = ($1 == 'true')
-        markup = markup.strip.sub(/counter:\w+/iu,'')
+        markup = markup.strip.sub(/counter:\w+/i,'')
       end
       super
     end
@@ -95,51 +97,14 @@ module Jekyll
     def render(context)
       html = ""
       config = context.registers[:site].config
-      category_dir = config['root'] + config['category_dir'] + '/'
+      category_dir = config['category_dir']
       categories = context.registers[:site].categories
       categories.keys.sort_by{ |str| str.downcase }.each do |category|
-        url = category_dir + category.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
-        html << "<li><a href='#{url}'>#{category}"
+        html << "<a class='list-group-item' href='/#{category_dir}/#{category.to_url}/'>#{category}"
         if @opts['counter']
           html << " (#{categories[category].count})"
         end
-        html << "</a></li>"
-      end
-      html
-    end
-  end
-
-  class TopCategoryList < Liquid::Tag
-    def initialize(tag_name, markup, tokens)
-      @opts = {}
-      if markup.strip =~ /\s*counter:(\w+)/iu
-        @opts['counter'] = ($1 == 'true')
-        markup = markup.strip.sub(/counter:\w+/iu,'')
-      end
-      if markup.strip =~ /\s*include_all:(\w+)/iu
-        @opts['include_all'] = ($1 == 'true')
-        markup = markup.strip.sub(/include_all:\w+/iu,'')
-      end
-      super
-    end
-    def render(context)
-      html = ""
-      config = context.registers[:site].config
-      category_dir = config['root'] + config['category_dir'] + '/'
-      categories = context.registers[:site].categories
-      cat_limit = config['top_category_limit'] || 10
-      if (@opts['include_all'] || config['top_category_limit'] == 0)
-	top_categories = categories.keys.sort_by{ |cat| categories[cat].count  }.reverse
-      else
-	top_categories = categories.keys.sort_by{ |cat| categories[cat].count  }.reverse.take(cat_limit)
-      end
-      top_categories.each do |category|
-        url = category_dir + category.gsub(/_|\P{Word}/u, '-').gsub(/-{2,}/u, '-').downcase
-        html << "<li><a href='#{url}'>#{category}"
-        if @opts['counter']
-          html << " (#{categories[category].count})"
-        end
-        html << "</a></li>"
+        html << "</a>"
       end
       html
     end
@@ -147,6 +112,5 @@ module Jekyll
 
 end
 
-Liquid::Template.register_tag('category_cloud', Jekyll::CategoryCloud)
+Liquid::Template.register_tag('tag_cloud', Jekyll::TagCloud)
 Liquid::Template.register_tag('category_list', Jekyll::CategoryList)
-Liquid::Template.register_tag('top_category_list', Jekyll::TopCategoryList)
