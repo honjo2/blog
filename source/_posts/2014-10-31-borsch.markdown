@@ -1,0 +1,13 @@
+---
+layout: post
+title: "ボルシチのレシピ"
+date: 2014-10-31 22:51
+comments: true
+categories: レシピ
+---
+
+ボルシチのレシピです。
+
+![](/images/2014-10-31/borsch.jpg)
+
+<script src="https://gist.github.com/honjo2/c1db94e92921c15cf4ad.js"></script>
